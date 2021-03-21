@@ -21,7 +21,13 @@ func main() {
 		result, index := binnarySearch(ints, 50000)
 		fmt.Println(result, " -> " ,index)
 	*/
+
+	result := bubbleSort([]int{2,5,4,1,7,12,10})
+	for _, val := range result {
+		fmt.Println(val)
+	}
 }
+
 
 func simpleSearch(list []int, item int)(status string, index int, value int) {
 	for i, val := range list {
@@ -39,6 +45,7 @@ func simpleSearch(list []int, item int)(status string, index int, value int) {
 	value = -1
 	return
 }
+
 func binnarySearch(list []int, item int) (int, int) {
 	low := 0
 	high := len(list) - 1
@@ -57,4 +64,19 @@ func binnarySearch(list []int, item int) (int, int) {
 		}
 	}
 	return -1, -1
+}
+
+
+func bubbleSort(list []int) (sorted []int) {
+	for i := 0; i < len(list); i++ {
+		for j := 0; j < len(list)-1; j++ {
+			if (list[j] > list[j+1]) {
+				temp := list[j]
+				list[j] = list[j+1];
+				list[j+1] = temp;
+			}
+		}
+	}
+	sorted = list
+	return
 }
