@@ -38,6 +38,10 @@ func main() {
 		fmt.Println("hasil akhir : ", result)
 		println("====================================")
 	*/
+
+	countDown(10)
+	res := recursionEx(10)
+	println(res)
 }
 
 
@@ -126,4 +130,21 @@ func selectionSort(numbers[] int) []int{
 
 func remove(slice []int, s int) []int {
 	return append(slice[:s], slice[s+1:]...)
+}
+
+func countDown(x int) int {
+	if x < 1 {
+		println("time out")
+		return -1
+	}
+	time.Sleep(100 * time.Millisecond)
+	println(x)
+	return countDown(x-1)
+}
+
+func recursionEx(n int) int {
+	if n == 1 {
+		return 1
+	}
+	return n * recursionEx(n-1)
 }
