@@ -59,9 +59,21 @@ func main() {
 		fmt.Println(a)
 	*/
 
-
+	result := quickSort([]int{10,9,8,7,6,5,4,3,2,1})
+	fmt.Println(unique(result))
 }
 
+func unique(numbers []int) []int{
+	keys := make(map[int]bool)
+	list := []int{}
+	for _, entry := range numbers {
+		if _, value := keys[entry]; !value {
+			keys[entry] = true
+			list = append(list, entry)
+		}
+	}
+	return list
+}
 
 func simpleSearch(list []int, item int)(status string, index int, value int) {
 	for i, val := range list {
@@ -227,18 +239,19 @@ func quickSort(numbers []int) []int {
 		return numbers
 	}
 
-	pivot := numbers[0]
-	var	less []int
+	var pivot []int 
+	pivot = append(pivot, numbers[0])
+	var less []int
 	var greater []int
 
 	for _, v := range numbers {
-		if v < pivot {
+		if v < pivot[0] {
 			less = append(less, v)
 		}else {
 			greater = append(greater, v)
 		}
 	}
 
-	// next impl
-	// return quickSort(less) + pivot + quickSort(greater)
+	a := append(quickSort(less), pivot...)
+	return append(a,quickSort(greater)...)
 }
