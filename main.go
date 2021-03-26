@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 var numbers = []int{9,8,7,6,5,4,3,2,1}
@@ -39,9 +40,23 @@ func main() {
 		println("====================================")
 	*/
 
-	countDown(10)
-	res := recursionEx(10)
-	println(res)
+	/* recursion
+		countDown(10)
+		res := recursionEx(10)
+		println(res)
+	*/
+
+	//result := sum([]int{1,2,3,4,5})
+	//fmt.Print(result)
+	//
+	//a := fibonacci(5)
+	//fmt.Println(a)
+
+	slice := []int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+	a := mergeSort(slice)
+	fmt.Println(a)
+
+
 }
 
 
@@ -82,7 +97,6 @@ func binnarySearch(list []int, item int) (int, int) {
 	return -1, -1
 }
 
-
 func bubbleSort(list []int) (sorted []int) {
 	for i := 0; i < len(list); i++ {
 		for j := 0; j < len(list)-1; j++ {
@@ -109,7 +123,6 @@ func findSmallest(numbers []int) int {
 	}
 	return smallest_index
 }
-
 
 func selectionSort(numbers[] int) []int{
 	var newArr []int 
@@ -147,4 +160,61 @@ func recursionEx(n int) int {
 		return 1
 	}
 	return n * recursionEx(n-1)
+}
+
+func sum(numbers []int) int {
+	temp := 0
+	for _, v := range numbers {
+		temp += v
+	}
+	return temp
+}
+
+func fibonacci(n int)  int {
+	if n <= 1 {
+		return n
+	}
+	return fibonacci(n-1) + fibonacci(n-2)
+}
+
+func mergeSort(slice []int) []int {
+	if len(slice) < 2 {
+		return slice
+	}
+
+	mid := len(slice) / 2
+
+	// [10 9 8 7 6]
+	// [5 4 3 2 1]
+	return Merge(mergeSort(slice[:mid]), mergeSort(slice[mid:]))
+}
+
+func Merge(left, right []int) []int {
+
+	// size = 10
+	// i = 0
+	// j = 0
+	size, i, j := len(left)+len(right), 0, 0
+
+	slice := make([]int, size, size)
+
+	// [10 9 8 7 6]
+	// [5 4 3 2 1]
+	for k := 0; k < size; k++ {
+		if  i > len(left) - 1 && j <= len(right) - 1{
+			slice[k] = right[j]
+			j++
+		}else if j > len(right)-1 && i <= len(left)-1 {
+			slice[k] = left[i]
+			i++
+		}else if left[i] < right[j] {
+			slice[k] = left[i]
+			i++
+		}else {
+			slice[k] = right[j]
+			j++
+		}
+	}
+
+	return slice
 }
