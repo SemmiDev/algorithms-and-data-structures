@@ -46,15 +46,18 @@ func main() {
 		println(res)
 	*/
 
-	//result := sum([]int{1,2,3,4,5})
-	//fmt.Print(result)
-	//
-	//a := fibonacci(5)
-	//fmt.Println(a)
+	/*
+		result := sum([]int{1,2,3,4,5})
+		fmt.Print(result)
+		a := fibonacci(5)
+		fmt.Println(a)
+	*/
 
-	slice := []int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
-	a := mergeSort(slice)
-	fmt.Println(a)
+	/*
+		slice := []int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+		a := mergeSort(slice)
+		fmt.Println(a)
+	*/
 
 
 }
@@ -217,4 +220,25 @@ func Merge(left, right []int) []int {
 	}
 
 	return slice
+}
+
+func quickSort(numbers []int) []int {
+	if len(numbers) < 2 {
+		return numbers
+	}
+
+	pivot := numbers[0]
+	var	less []int
+	var greater []int
+
+	for _, v := range numbers {
+		if v < pivot {
+			less = append(less, v)
+		}else {
+			greater = append(greater, v)
+		}
+	}
+
+	// next impl
+	// return quickSort(less) + pivot + quickSort(greater)
 }

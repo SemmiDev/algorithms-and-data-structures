@@ -39,6 +39,17 @@ def selectionSort(arr):
 		newArr.append(arr.pop(smallest))
 	return newArr
 
+def quickSort(numbers):
+	if len(numbers) < 2:
+		return numbers
+	else:
+		pivot = numbers[0]
+		less = [i for i in numbers[1:] if i <= pivot]
+		greater = [i for i in numbers[1:] if i > pivot]
+		return quickSort(less) + [pivot] + quickSort(greater)
+
+print(quickSort([10,5,2,3,9,8,7,6,12]))
+
 
 # my_list = [1,3,5,7,9,13]
 # angka = 9
