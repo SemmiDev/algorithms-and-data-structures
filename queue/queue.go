@@ -15,8 +15,8 @@ func NewQueue() QueueOperations {
 	return &Queue{}
 }
 
-func (q Queue) IsEmpty() bool {
-	panic("implement me")
+func (q *Queue) IsEmpty() bool {
+	return len(*q) == 0
 }
 
 func (q *Queue) size() int {
