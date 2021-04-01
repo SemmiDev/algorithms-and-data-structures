@@ -59,8 +59,17 @@ func main() {
 		fmt.Println(a)
 	*/
 
-	result := quickSort([]int{10,9,8,7,6,5,4,3,2,1})
-	fmt.Println(unique(result))
+	/*
+		result := quickSort([]int{10,9,8,7,6,5,4,3,2,1})
+		fmt.Println(unique(result))
+	*/
+
+	/*
+		result := insertionSort([]int{10,9,8,7,6,5,4,3,2,-2,-10,-3})
+		fmt.Println(result)
+	*/
+
+	hashTableSample()
 }
 
 func unique(numbers []int) []int{
@@ -254,4 +263,21 @@ func quickSort(numbers []int) []int {
 
 	a := append(quickSort(less), pivot...)
 	return append(a,quickSort(greater)...)
+}
+
+func insertionSort(numbers []int) (sorted []int) {
+	temp := numbers[:]
+	for j := 1; j < len(temp); j++ {
+		key, i := temp[j], j-1
+		for i > -1 && temp[i] > key {
+			temp[i+1], i = temp[i], i-1
+		}
+		temp[i+1] = key
+	}
+	sorted = temp
+	return
+}
+
+func hashTableSample() {
+	var envs map[string]interface{}
 }
