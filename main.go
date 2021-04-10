@@ -279,5 +279,5 @@ func insertionSort(numbers []int) (sorted []int) {
 }
 
 func hashTableSample() {
-	var envs map[string]interface{}
+	var _ map[string]interface{}
 }
