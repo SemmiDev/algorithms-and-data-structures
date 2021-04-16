@@ -150,8 +150,7 @@ func Alter(writer http.ResponseWriter, request *http.Request) {
 
 	customers = GetCustomers("asc")
 	_ = template_html.ExecuteTemplate(writer, "View", customers)
-}
-func Update(writer http.ResponseWriter, request *http.Request) {
+}func Update(writer http.ResponseWriter, request *http.Request) {
 	var customerId uint
 	var customerIdStr string
 
